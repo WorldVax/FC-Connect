@@ -17,7 +17,7 @@ angular.module('app.controllers', [])
             if (timer) {
                 $timeout.cancel(timer);
             }
-            timer = $timeout($scope.onSearch,250)
+            timer = $timeout($scope.onSearch, 250)
         });
 
         $scope.onSearch = function () {
@@ -25,7 +25,7 @@ angular.module('app.controllers', [])
         };
     })
 
-    .controller('PatientDetailCtrl', function ($scope, $stateParams, Patients) {
+    .controller('PatientDetailCtrl', function ($scope, $stateParams, Patients) {                
         $scope.vm = Patients.get($stateParams.patientId);
     })
 
