@@ -6,7 +6,7 @@ angular.module('app.controllers', [])
 
     })
 
-    .controller('SearchCtrl', function ($scope, $timeout, Patients) {
+    .controller('SearchCtrl', function ($scope, $timeout, MedicalDbService) {
         $scope.vm = {
             patients: [],
             query: ''
@@ -21,7 +21,7 @@ angular.module('app.controllers', [])
         });
 
         $scope.onSearch = function () {
-            $scope.vm.patients = Patients.filter($scope.vm.query);
+            $scope.vm.patients = MedicalDbService.filter($scope.vm.query);
         };
     })
 
