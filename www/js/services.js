@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('app.services', ['app.dbServices'])
+angular.module('app.services', [])
 
     .factory('MedicalDbService', function (DbService) {
         return {

@@ -25,8 +25,19 @@ angular.module('app.controllers', [])
         };
     })
 
-    .controller('PatientDetailCtrl', function ($scope, $stateParams, Patients) {                
-        $scope.vm = Patients.get($stateParams.patientId);
+    .controller('PatientDetailCtrl', function ($scope, $stateParams, MedicalDbService) {
+        $scope.vm = MedicalDbService.get($stateParams.patientId);
+        $scope.isEditable = false;
+        $scope.startEdit = function () {
+            $scope.isEditable = true;
+        };
+        $scope.cancelEdit = function () {
+            $scope.isEditable = false;
+        };
+        $scope.finishEdit = function () {
+            // TODO save the model
+            $scope.isEditable = false;
+        };
     })
 
     .controller('AccountCtrl', function ($scope) {
