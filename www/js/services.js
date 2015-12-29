@@ -5,28 +5,32 @@ angular.module('app.services', [])
     .factory('MedicalDbService', function (DbService) {
         return {
             all: function () {
-                return DbService;
+                return DbService.allDocs();
             },
             filter: function (query) {
-                if (query == '') {
-                    return [];
-                } else {
-                    var results = _.filter(DbService, function (item) {
-                        var n = item.identity.lastName + item.identity.firstName;
-                        var re = new RegExp(query, "i");
-                        return re.test(n);
+                query = query.toLowerCase();
+                return DbService.query('patients/by_name', {
+                    startKey: query,
+                    endKey: query + '\u9999'
+                }).then(function (data) {
+                    return _.map(data.rows, function (row) {
+                        return row.value;
                     });
-                    return results;
-                }
+                });
             },
-            remove: function (patient) {
-                DbService.splice(DbService.indexOf(patient), 1);
+            remove: function (doc) {
+                DbService.delete(doc)
+                    .then(function () {
+                        return;
+                    })
+                    .catch(console.log.bind(console));
             },
             get: function (id) {
-                var patient = _.find(DbService, function (item) {
-                    return item.patientId == id;
-                });
-                return patient;
+                DbService.get(id)
+                    .then(function (doc) {
+                        return doc;
+                    })
+                    .catch(console.log.bind(console));
             }
         };
     });
