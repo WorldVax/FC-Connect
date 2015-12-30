@@ -1,14 +1,13 @@
 "use strict";
 
 angular.module('app.dbServices', [])
-    .factory('DbService', function () {
+    .factory('DbService', function ($window) {
 
-        var PouchDB = require('pouchdb');
         var options = {
             name: 'data/medical.db',
-            db: require('sqldown')
+            adapter: 'websql'
         }
-        var db = new PouchDB(options);
+        var db = new $window.PouchDB(options);
 
         return db;
     });
