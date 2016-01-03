@@ -20,9 +20,13 @@ angular.module('app.services', [])
                     });
                 }).catch($log.error)
             },
-            get: function (id) {
+            read: function (id) {
                 return db.get(id)
                     .catch($log.error);
+            },
+            save:function(doc){
+                return db.put(doc)
+                .catch($log.error);
             }
         };
     });

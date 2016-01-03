@@ -48,11 +48,11 @@ angular.module('app.controllers', [])
             $scope.isEditable = false;
         };
         $scope.finishEdit = function () {
-            // TODO save the model
+            MedicalService.save($scope.vm);
             $scope.isEditable = false;
         };        
         
-       MedicalService.get($stateParams.patientId)
+       MedicalService.read($stateParams.patientId)
        .then(bind);
     })
 
