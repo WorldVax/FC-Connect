@@ -1,13 +1,11 @@
-<!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
--->
-<ion-view view-title="{{vm.identity.lastName}}, {{vm.identity.firstName}}">
+<ion-view view-title="">
     <ion-content class="padding">
+        
+            <button class="button ion-checkmark" ng-show="isEditable" ng-click="finishEdit()"></button>
+            <button class="button ion-close" ng-show="isEditable" ng-click="cancelEdit()"></button>
         <div ng-hide="isEditable">
-            <img ng-src="photos/{{vm.patientId}}.jpg" style="width: 64px; height: 64px" onerror="this.onerror=null;this.src='photos/unknown-90x100.jpg';">
+            {{vm.identity.lastName}}, {{vm.identity.firstName}}
+            <img ng-src="/photos/{{vm.patientId}}.jpg" style="width: 64px; height: 64px" onerror="this.onerror=null;this.src='/photos/unknown-90x100.jpg';">
             <button class="button ion-edit" ng-hide="isEditable" ng-click="startEdit()"></button>
             <div class="row">
                 <div class="col-25">SSN</div>
@@ -89,35 +87,6 @@
                 <span class="input-label">Zip</span>
                 <input type="text" ng-model="vm.address.postalCode">
             </label>
-
-
-
-<!--
-
-            <div class="row">
-                <div class="col-25">Phone</div>
-                <div class="col">
-                    <div>
-                        <div class="row" ng-repeat="(key, value) in vm.contact.phone">
-                            <div class="col">{{key}}</div>
-                            <div class="col">{{value}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-25">Email</div>
-                <div class="col">
-                    <div>
-                        <div class="row" ng-repeat="(key, value) in vm.contact.email">
-                            <div class="col">{{key}}</div>
-                            <div class="col">{{value}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <button class="button ion-checkmark" ng-show="isEditable" ng-click="finishEdit()"></button>
-            <button class="button ion-close" ng-show="isEditable" ng-click="cancelEdit()"></button>
         </div>
     </ion-content>
 </ion-view>

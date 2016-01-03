@@ -7,7 +7,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.services', 'app.admin', 'data.medical', 'pouchdb'])
+angular.module('app', ['ionic', 'ionic-material', 'app.controllers', 'app.services', 'data.medical', 'pouchdb'])
     .constant('_', window._)
 
     .run(function ($ionicPlatform) {
@@ -33,64 +33,55 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'app.admin', 
         // Set up the various states which the app can be in.
         // Each state's controller can be found in controllers.js
         $stateProvider
-        
-        // initialize the database
-            .state('init', {
-                url: '/init',
-                templateUrl: 'templates/tab-home.html',
-                controller:'AdminCtrl'
-            })
 
-        // setup an abstract state for the tabs directive
-            .state('tab', {
-                url: '/tab',
+            .state('app', {
+                url: '/app',
                 abstract: true,
-                templateUrl: 'templates/tabs.html'
+                templateUrl: 'templates/menu.html',
+                controller:'MenuCtrl'
             })
 
-        // Each tab has its own nav history stack:
-
-            .state('tab.home', {
+            .state('app.home', {
                 url: '/home',
                 views: {
-                    'tab-home': {
-                        templateUrl: 'templates/tab-home.html',
+                    'menuContent': {
+                        templateUrl: 'templates/home.html',
                         controller: 'HomeCtrl'
                     }
                 }
             })
 
-            .state('tab.search', {
+            .state('app.search', {
                 url: '/search',
                 views: {
-                    'tab-search': {
-                        templateUrl: 'templates/tab-search.html',
+                    'menuContent': {
+                        templateUrl: 'templates/search.html',
                         controller: 'SearchCtrl'
                     }
                 }
             })
 
-            .state('tab.patient-detail', {
+            .state('app.patient', {
                 url: '/patient/:patientId',
                 views: {
-                    'tab-patient-detail': {
-                        templateUrl: 'templates/tab-patient-detail.html',
-                        controller: 'PatientDetailCtrl'
+                    'menuContent': {
+                        templateUrl: 'templates/patient.html',
+                        controller: 'PatientCtrl'
                     }
                 }
             })
 
-            .state('tab.account', {
-                url: '/account',
+            .state('app.settings', {
+                url: '/settings',
                 views: {
-                    'tab-account': {
-                        templateUrl: 'templates/tab-account.html',
-                        controller: 'AccountCtrl'
+                    'menuContent': {
+                        templateUrl: 'templates/settings.html',
+                        controller: 'SettingsCtrl'
                     }
                 }
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/home');
+        $urlRouterProvider.otherwise('/app/home');
 
     });

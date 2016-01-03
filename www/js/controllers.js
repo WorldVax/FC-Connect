@@ -2,11 +2,14 @@
 
 angular.module('app.controllers', [])
 
-    .controller('HomeCtrl', function ($scope) {
-
+    .controller('MenuCtrl', function ($scope, PatientService) {
+        $scope.current = PatientService.current;
     })
 
-    .controller('SearchCtrl', function ($scope, $timeout, $q, MedicalService) {
+    .controller('HomeCtrl', function ($scope){
+    })
+
+    .controller('SearchCtrl', function ($scope, $timeout, $q, PatientService) {
         $scope.vm = {
             patients: [],
             query: ''
@@ -26,21 +29,22 @@ angular.module('app.controllers', [])
 
         $scope.onSearch = function () {
             if ($scope.vm.query) {
-                MedicalService
+                PatientService
                     .filter($scope.vm.query)
                     .then(bind);
             };
         }
     })
 
-    .controller('PatientDetailCtrl', function ($scope, $stateParams, MedicalService) {
-        
+    .controller('PatientCtrl', function ($scope, $stateParams, PatientService) {
+
         $scope.isEditable = false;
-        
-        function bind(result){
+
+        function bind(result) {
             $scope.vm = result;
+            PatientService.currentPatientId = $stateParams.patientId;
         }
-        
+
         $scope.startEdit = function () {
             $scope.isEditable = true;
         };
@@ -48,19 +52,15 @@ angular.module('app.controllers', [])
             $scope.isEditable = false;
         };
         $scope.finishEdit = function () {
-            MedicalService.save($scope.vm);
+            PatientService.save($scope.vm);
             $scope.isEditable = false;
-        };        
-        
-       MedicalService.read($stateParams.patientId)
-       .then(bind);
+        };
+
+        PatientService
+            .read($stateParams.patientId)
+            .then(bind);
     })
 
-    .controller('AccountCtrl', function ($scope) {
-        $scope.settings = {
-        };
-    })
-    
-    .controller('AdminCtrl', function(Admin){
-      Admin.initialize();  
+    .controller('SettingsCtrl', function ($scope, DbSetup) {
+
     });
