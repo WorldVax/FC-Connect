@@ -7,7 +7,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.services', 'app.dbServices'])
+angular.module('app', ['ionic', 'app.controllers', 'app.services', 'app.admin', 'data.medical', 'pouchdb'])
     .constant('_', window._)
 
     .run(function ($ionicPlatform) {
@@ -33,6 +33,13 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'app.dbServic
         // Set up the various states which the app can be in.
         // Each state's controller can be found in controllers.js
         $stateProvider
+        
+        // initialize the database
+            .state('init', {
+                url: '/init',
+                templateUrl: 'templates/tab-home.html',
+                controller:'AdminCtrl'
+            })
 
         // setup an abstract state for the tabs directive
             .state('tab', {
@@ -48,7 +55,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'app.dbServic
                 views: {
                     'tab-home': {
                         templateUrl: 'templates/tab-home.html',
-                        controller: 'AppCtrl'
+                        controller: 'HomeCtrl'
                     }
                 }
             })
