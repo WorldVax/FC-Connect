@@ -6,11 +6,15 @@ angular.module('app.controllers', [])
 
     })
 
-    .controller('SearchCtrl', function ($scope, $timeout, MedicalDbService) {
+    .controller('SearchCtrl', function ($scope, $timeout, $q, MedicalService) {
         $scope.vm = {
             patients: [],
             query: ''
         };
+
+        function bind(model) {
+            $scope.vm.patients = model;
+        }
 
         var timer = false;
         $scope.$watch('vm.query', function () {
@@ -21,13 +25,22 @@ angular.module('app.controllers', [])
         });
 
         $scope.onSearch = function () {
-            $scope.vm.patients = MedicalDbService.filter($scope.vm.query);
-        };
+            if ($scope.vm.query) {
+                MedicalService
+                    .filter($scope.vm.query)
+                    .then(bind);
+            };
+        }
     })
 
-    .controller('PatientDetailCtrl', function ($scope, $stateParams, MedicalDbService) {
-        $scope.vm = MedicalDbService.get($stateParams.patientId);
+    .controller('PatientDetailCtrl', function ($scope, $stateParams, MedicalService) {
+        
         $scope.isEditable = false;
+        
+        function bind(result){
+            $scope.vm = result;
+        }
+        
         $scope.startEdit = function () {
             $scope.isEditable = true;
         };
@@ -37,10 +50,17 @@ angular.module('app.controllers', [])
         $scope.finishEdit = function () {
             // TODO save the model
             $scope.isEditable = false;
-        };
+        };        
+        
+       MedicalService.get($stateParams.patientId)
+       .then(bind);
     })
 
     .controller('AccountCtrl', function ($scope) {
         $scope.settings = {
         };
+    })
+    
+    .controller('AdminCtrl', function(Admin){
+      Admin.initialize();  
     });

@@ -2,35 +2,27 @@
 
 angular.module('app.services', [])
 
-    .factory('MedicalDbService', function (DbService) {
+    .factory('MedicalService', function ($log, pouchDB, Admin) {
+
+        var db = pouchDB(Admin.options);
+
         return {
-            all: function () {
-                return DbService.allDocs();
-            },
             filter: function (query) {
                 query = query.toLowerCase();
-                return DbService.query('patients/by_name', {
-                    startKey: query,
-                    endKey: query + '\u9999'
+
+                return db.query('patients/by_name', {
+                    'startkey': query,
+                    'endkey': query + '\u9999',
+                    'include_docs': true
                 }).then(function (data) {
                     return _.map(data.rows, function (row) {
-                        return row.value;
+                        return row.doc;
                     });
-                });
-            },
-            remove: function (doc) {
-                DbService.delete(doc)
-                    .then(function () {
-                        return;
-                    })
-                    .catch(console.log.bind(console));
+                }).catch($log.error)
             },
             get: function (id) {
-                DbService.get(id)
-                    .then(function (doc) {
-                        return doc;
-                    })
-                    .catch(console.log.bind(console));
+                return db.get(id)
+                    .catch($log.error);
             }
         };
     });

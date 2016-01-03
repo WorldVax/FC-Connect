@@ -6,8 +6,8 @@
         </label>
 
         <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="vm in vm.patients" type="item-text-wrap" href="#/tab/patient/{{vm.patientId}}">
-                <img ng-src="photos/{{vm.patientId}}.jpg" onerror="this.onerror=null;this.src='photos/unknown-90x100.jpg';">
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="vm in vm.patients" type="item-text-wrap" href="#/tab/patient/{{vm._id}}">
+                <img ng-src="/photos/{{vm.patientId}}.jpg" onerror="this.onerror=null;this.src='/photos/unknown-90x100.jpg';">
                 <h2>{{vm.identity.lastName}}</h2>
                 <p>{{vm.identity.firstName}}</p>
                 <i class="icon ion-chevron-right icon-accessory"></i>
