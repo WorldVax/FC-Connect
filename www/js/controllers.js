@@ -6,7 +6,10 @@ angular.module('app.controllers', [])
         $scope.current = PatientService.current;
     })
 
-    .controller('HomeCtrl', function ($scope){
+    .controller('HomeCtrl', function ($scope, $state) {
+        $scope.goSearch = function () {
+            $state.go('app.search');
+        }
     })
 
     .controller('SearchCtrl', function ($scope, $timeout, $q, PatientService) {

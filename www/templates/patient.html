@@ -1,91 +1,92 @@
 <ion-view view-title="">
     <ion-content class="padding">
-        
-            <button class="button ion-checkmark" ng-show="isEditable" ng-click="finishEdit()"></button>
-            <button class="button ion-close" ng-show="isEditable" ng-click="cancelEdit()"></button>
-        <div ng-hide="isEditable">
+        <button class="button ion-edit button-positive button-fab button-fab-bottom-right" ng-hide="isEditable " ng-click="startEdit() "></button>
+        <button class="button ion-checkmark button-positive button-fab button-fab-bottom-right" ng-show="isEditable " ng-click="finishEdit() "></button>
+         <button class="button ion-close button-right clear" ng-show="isEditable " ng-click="cancelEdit() "></button>
+        <div ng-hide="isEditable ">
             {{vm.identity.lastName}}, {{vm.identity.firstName}}
-            <img ng-src="/photos/{{vm.patientId}}.jpg" style="width: 64px; height: 64px" onerror="this.onerror=null;this.src='/photos/unknown-90x100.jpg';">
-            <button class="button ion-edit" ng-hide="isEditable" ng-click="startEdit()"></button>
-            <div class="row">
-                <div class="col-25">SSN</div>
-                <div class="col">{{vm.identity.ssn}}</div>
+            <img ng-src="/photos/{{vm.patientId}}.jpg " style="width: 64px; height: 64px " onerror="this.onerror=null;this.src='/photos/unknown-90x100.jpg'
+        ; ">
+         
+            <div class="row ">
+                <div class="col-25 ">SSN</div>
+                <div class="col ">{{vm.identity.ssn}}</div>
             </div>
-            <div class="row">
-                <div class="col-25">Gender</div>
-                <div class="col">{{vm.identity.gender}}</div>
+            <div class="row ">
+                <div class="col-25 ">Gender</div>
+                <div class="col ">{{vm.identity.gender}}</div>
             </div>
-            <div class="row">
-                <div class="col-25">Birth Date</div>
-                <div class="col">{{vm.identity.dob}}</div>
+            <div class="row ">
+                <div class="col-25 ">Birth Date</div>
+                <div class="col ">{{vm.identity.dob}}</div>
             </div>
-            <div class="row">
-                <div class="col-25">Street</div>
-                <div class="col">{{vm.address.street}}</div>
+            <div class="row ">
+                <div class="col-25 ">Street</div>
+                <div class="col ">{{vm.address.street}}</div>
             </div>
-            <div class="row">
-                <div class="col-25">City</div>
-                <div class="col">{{vm.address.city}}</div>
+            <div class="row ">
+                <div class="col-25 ">City</div>
+                <div class="col ">{{vm.address.city}}</div>
             </div>
-            <div class="row">
-                <div class="col-25">State</div>
-                <div class="col">{{vm.address.state}}</div>
+            <div class="row ">
+                <div class="col-25 ">State</div>
+                <div class="col ">{{vm.address.state}}</div>
             </div>
-            <div class="row">
-                <div class="col-25">Postal Code</div>
-                <div class="col">{{vm.address.postalCode}}</div>
+            <div class="row ">
+                <div class="col-25 ">Postal Code</div>
+                <div class="col ">{{vm.address.postalCode}}</div>
             </div>
-            <div class="row">
-                <div class="col-25">Phone</div>
-                <div class="col">
+            <div class="row ">
+                <div class="col-25 ">Phone</div>
+                <div class="col ">
                     <div>
-                        <div class="row" ng-repeat="(key, value) in vm.contact.phone">
-                            <div class="col">{{key}}</div>
-                            <div class="col">{{value}}</div>
+                        <div class="row " ng-repeat="(key, value) in vm.contact.phone ">
+                            <div class="col ">{{key}}</div>
+                            <div class="col ">{{value}}</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-25">Email</div>
-                <div class="col">
+            <div class="row ">
+                <div class="col-25 ">Email</div>
+                <div class="col ">
                     <div>
-                        <div class="row" ng-repeat="(key, value) in vm.contact.email">
-                            <div class="col">{{key}}</div>
-                            <div class="col">{{value}}</div>
+                        <div class="row " ng-repeat="(key, value) in vm.contact.email ">
+                            <div class="col ">{{key}}</div>
+                            <div class="col ">{{value}}</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div ng-show="isEditable" class="list">
-            <label class="item-input">
-                <span class="input-label">SSN</span>
-                <input type="text" ng-model="vm.identity.ssn">
+        <div ng-show="isEditable " class="list ">
+            <label class="item-input ">
+                <span class="input-label ">SSN</span>
+                <input type="text " ng-model="vm.identity.ssn ">
             </label>
-            <label class="item-input">
-                <span class="input-label">Gender</span>
-                <input type="text" ng-model="vm.identity.gender">
+            <label class="item-input ">
+                <span class="input-label ">Gender</span>
+                <input type="text " ng-model="vm.identity.gender ">
             </label>
-            <label class="item-input">
-                <span class="input-label">Birth Date</span>
-                <input type="text" ng-model="vm.identity.dob">
+            <label class="item-input ">
+                <span class="input-label ">Birth Date</span>
+                <input type="text " ng-model="vm.identity.dob ">
             </label>
-            <label class="item-input">
-                <span class="input-label">Street</span>
-                <input type="text" ng-model="vm.address.street">
+            <label class="item-input ">
+                <span class="input-label ">Street</span>
+                <input type="text " ng-model="vm.address.street ">
             </label>
-            <label class="item-input">
-                <span class="input-label">City</span>
-                <input type="text" ng-model="vm.address.city">
+            <label class="item-input ">
+                <span class="input-label ">City</span>
+                <input type="text " ng-model="vm.address.city ">
             </label>
-            <label class="item-input">
-                <span class="input-label">State</span>
-                <input type="text" ng-model="vm.address.state">
+            <label class="item-input ">
+                <span class="input-label ">State</span>
+                <input type="text " ng-model="vm.address.state ">
             </label>
-            <label class="item-input">
-                <span class="input-label">Zip</span>
-                <input type="text" ng-model="vm.address.postalCode">
+            <label class="item-input ">
+                <span class="input-label ">Zip</span>
+                <input type="text " ng-model="vm.address.postalCode ">
             </label>
         </div>
     </ion-content>
