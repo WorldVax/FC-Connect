@@ -1,7 +1,7 @@
 {
-  "name": "fcconnect",
-  "version": "1.1.1",
-  "description": "fcconnect: An Ionic project",
+  "name": "FC-Connect",
+  "version": "0.3.0",
+  "description": "A mobile vaccination tracker.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
@@ -22,5 +22,26 @@
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "android"
+  ],
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WorldVax/FC-Connect-Ionic.git"
+  },
+  "keywords": [
+    "worldvax",
+    "immunization",
+    "vaccine"
+  ],
+  "author": "Dennis Dunn <ansofive@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WorldVax/FC-Connect-Ionic/issues"
+  },
+  "homepage": "https://github.com/WorldVax/FC-Connect-Ionic#readme"
 }
