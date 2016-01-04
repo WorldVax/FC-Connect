@@ -1,9 +1,15 @@
 <ion-view>
-    <ion-nav-title>{{vm.identity.lastName}}, {{vm.identity.firstName}}</ion-nav-title>
+    <ion-nav-title>
+        <span ng-show="vm._id">{{vm.identity.lastName}}, {{vm.identity.firstName}}</span>
+        <span ng-hide="vm._id">FC-Connect</span>
+    </ion-nav-title>
     <ion-content class="padding">
-        <button class="button ion-edit button-positive button-fab button-fab-bottom-right" ng-click="startEdit()"></button>
-        <div>
-            <img ng-src="photos/unknown-90x100.jpg " style="width: 64px; height: 64px " onerror="this.onerror=null;this.src='photos/unknown-90x100.jpg'; ">
+        <div ng-hide="vm._id">
+            No patient record has been selected.
+        </div>
+        <div ng-show="vm._id">
+            <button class="button ion-edit button-positive button-fab button-fab-bottom-right" ng-hide="isEditing" ng-click="startEdit()"></button>
+            <img ng-src="photos/{{vm._id}}.jpg " style="width: 64px; height: 64px " onerror="this.onerror=null;this.src='photos/unknown-90x100.jpg'; ">
             <div class="row ">
                 <div class="col-25 ">SSN</div>
                 <div class="col ">{{vm.identity.ssn}}</div>
