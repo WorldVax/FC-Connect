@@ -65,7 +65,7 @@ angular.module('app', ['ionic', 'ionic-material', 'app.controllers', 'app.servic
                 url: '/patient/:patientId',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/patient.html',
+                        templateUrl: 'templates/patient-view.html',
                         controller: 'PatientCtrl'
                     }
                 }

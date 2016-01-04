@@ -41,27 +41,21 @@ angular.module('app.controllers', [])
 
     .controller('PatientCtrl', function ($scope, $stateParams, PatientService) {
 
-        $scope.isEditable = false;
-
-        function bind(result) {
-            $scope.vm = result;
-            PatientService.currentPatientId = $stateParams.patientId;
-        }
-
-        $scope.startEdit = function () {
-            $scope.isEditable = true;
-        };
-        $scope.cancelEdit = function () {
-            $scope.isEditable = false;
-        };
-        $scope.finishEdit = function () {
-            PatientService.save($scope.vm);
-            $scope.isEditable = false;
-        };
-
         PatientService
             .read($stateParams.patientId)
-            .then(bind);
+            .then(function (result) {
+                $scope.vm = result;
+            });
+
+        $scope.startEdit = function () {
+        };
+
+        $scope.cancelEdit = function () {
+        };
+
+        $scope.finishEdit = function () {
+            PatientService.save($scope.vm);
+        };
     })
 
     .controller('SettingsCtrl', function ($scope, DbSetup) {
