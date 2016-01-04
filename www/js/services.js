@@ -2,9 +2,11 @@
 
 angular.module('app.services', [])
 
-    .factory('MedicalService', function ($log, pouchDB, Admin) {
+    .factory('PatientService', function ($log, pouchDB, DbSetup) {
 
-        var db = pouchDB(Admin.options);
+        var current = null;
+
+        var db = pouchDB(DbSetup.options);
 
         return {
             filter: function (query) {
@@ -24,9 +26,44 @@ angular.module('app.services', [])
                 return db.get(id)
                     .catch($log.error);
             },
-            save:function(doc){
+            save: function (doc) {
                 return db.put(doc)
-                .catch($log.error);
+                    .catch($log.error);
             }
         };
+    })
+
+    .factory('DbSetup', function (pouchDB, MedicalData) {
+
+        var self = {
+            options: {
+                name: 'medical.db',
+                adapter: 'websql'
+            },
+            dbInfo: {},
+            initialize: function () {
+                // todo save the options as a doc after the db is initialized
+                console.log('Initialize database.');
+                pouchDB(self.options)
+                    .destroy().then(function () {
+                        console.log('Load medical database design documents.');
+                        pouchDB(self.options)
+                            .bulkDocs(MedicalData.design_docs)
+                            .then(self.info)
+                    });
+            },
+            load: function () {
+                console.log('Loading fake patient data.');
+                pouchDB(self.options)
+                    .bulkDocs(MedicalData.patients)
+                    .then(self.info)
+            },
+            info: function () {
+                pouchDB(self.options)
+                    .info()
+                    .then((function (info) { self.dbInfo = info; }))
+            }
+        };
+
+        return self;
     });

@@ -8,6 +8,8 @@
     "underscore": "~1.8.3",
     "angular-resource": "~1.4.8",
     "pouchdb": "~5.1.0",
-    "angular-pouchdb": "~4.1.0"
+    "angular-pouchdb": "~4.1.0",
+    "ionic-material": "~0.4.2",
+    "robotodraft": "~1.1.0"
   }
 }

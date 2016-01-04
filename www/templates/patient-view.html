@@ -1,0 +1,65 @@
+<ion-view>
+    <ion-nav-title>
+        <span ng-show="vm._id">{{vm.identity.lastName}}, {{vm.identity.firstName}}</span>
+        <span ng-hide="vm._id">FC-Connect</span>
+    </ion-nav-title>
+    <ion-content class="padding">
+        <div ng-hide="vm._id">
+            No patient record has been selected.
+        </div>
+        <div ng-show="vm._id">
+            <button class="button ion-edit button-positive button-fab button-fab-bottom-right" ng-hide="isEditing" ng-click="startEdit()"></button>
+            <img ng-src="photos/{{vm._id}}.jpg " style="width: 64px; height: 64px " onerror="this.onerror=null;this.src='photos/unknown-90x100.jpg'; ">
+            <div class="row ">
+                <div class="col-25 ">SSN</div>
+                <div class="col ">{{vm.identity.ssn}}</div>
+            </div>
+            <div class="row ">
+                <div class="col-25 ">Gender</div>
+                <div class="col ">{{vm.identity.gender}}</div>
+            </div>
+            <div class="row ">
+                <div class="col-25 ">Birth Date</div>
+                <div class="col ">{{vm.identity.dob}}</div>
+            </div>
+            <div class="row ">
+                <div class="col-25 ">Street</div>
+                <div class="col ">{{vm.address.street}}</div>
+            </div>
+            <div class="row ">
+                <div class="col-25 ">City</div>
+                <div class="col ">{{vm.address.city}}</div>
+            </div>
+            <div class="row ">
+                <div class="col-25 ">State</div>
+                <div class="col ">{{vm.address.state}}</div>
+            </div>
+            <div class="row ">
+                <div class="col-25 ">Postal Code</div>
+                <div class="col ">{{vm.address.postalCode}}</div>
+            </div>
+            <div class="row ">
+                <div class="col-25 ">Phone</div>
+                <div class="col ">
+                    <div>
+                        <div class="row " ng-repeat="(key, value) in vm.contact.phone ">
+                            <div class="col ">{{key}}</div>
+                            <div class="col ">{{value}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-25 ">Email</div>
+                <div class="col ">
+                    <div>
+                        <div class="row " ng-repeat="(key, value) in vm.contact.email ">
+                            <div class="col ">{{key}}</div>
+                            <div class="col ">{{value}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

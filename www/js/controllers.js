@@ -2,11 +2,21 @@
 
 angular.module('app.controllers', [])
 
-    .controller('HomeCtrl', function ($scope) {
-
+    .controller('MenuCtrl', function ($scope, $state, PatientService) {
+        $scope.showPatient = function () {
+            $state.go('app.patient', {
+                    patientId: PatientService.currentId
+                });
+        };
     })
 
-    .controller('SearchCtrl', function ($scope, $timeout, $q, MedicalService) {
+    .controller('HomeCtrl', function ($scope, $state) {
+        $scope.goSearch = function () {
+            $state.go('app.search');
+        }
+    })
+
+    .controller('SearchCtrl', function ($scope, $timeout, PatientService) {
         $scope.vm = {
             patients: [],
             query: ''
@@ -26,41 +36,75 @@ angular.module('app.controllers', [])
 
         $scope.onSearch = function () {
             if ($scope.vm.query) {
-                MedicalService
+                PatientService
                     .filter($scope.vm.query)
                     .then(bind);
             };
         }
     })
 
-    .controller('PatientDetailCtrl', function ($scope, $stateParams, MedicalService) {
-        
-        $scope.isEditable = false;
-        
-        function bind(result){
-            $scope.vm = result;
+    .controller('PatientCtrl', function ($scope, $stateParams, $ionicModal, PatientService) {
+
+        $scope.isEditing = false;
+
+        if ($stateParams.patientId) {
+            $scope.hasData = true;
+            PatientService
+                .read($stateParams.patientId)
+                .then(function (result) {
+                    PatientService.currentId = result._id;
+                    $scope.vm = result;
+                });
+        } else {
+            delete (PatientService.currentId);
+            delete ($scope.vm);
         }
-        
+
+        $ionicModal.fromTemplateUrl('templates/patient-edit.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.modal = modal;
+        });
+
         $scope.startEdit = function () {
-            $scope.isEditable = true;
+            $scope.isEditing = true;
+            $scope.modal.show();
         };
-        $scope.cancelEdit = function () {
-            $scope.isEditable = false;
-        };
+
         $scope.finishEdit = function () {
-            MedicalService.save($scope.vm);
-            $scope.isEditable = false;
-        };        
+            PatientService
+                .save($scope.vm)
+                .then(function () {
+                    $scope.modal.hide();
+                });
+        };
+
+        $scope.cancelEdit = function () {
+            PatientService
+                .read($scope.vm._id)
+                .then(function (result) {
+                    $scope.vm = result;
+                    $scope.modal.hide();
+                });
+        };
         
-       MedicalService.read($stateParams.patientId)
-       .then(bind);
+        //Cleanup the modal when we're done with it!
+        $scope.$on('$destroy', function () {
+            $scope.modal.remove();
+        });
+        
+        // Execute action on hide modal
+        $scope.$on('modal.hidden', function () {
+            $scope.isEditing = false;
+        });
+        
+        // Execute action on remove modal
+        $scope.$on('modal.removed', function () {
+            $scope.isEditing = false;
+        });
     })
 
-    .controller('AccountCtrl', function ($scope) {
-        $scope.settings = {
-        };
-    })
-    
-    .controller('AdminCtrl', function(Admin){
-      Admin.initialize();  
+    .controller('SettingsCtrl', function ($scope, DbSetup) {
+
     });
