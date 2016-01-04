@@ -1,7 +1,7 @@
 {
-  "name": "fcconnect",
+  "name": "FC-Connect",
   "version": "0.2.0",
-  "description": "FC-Connect",
+  "description": "A mobile vaccination tracker.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
