@@ -20136,4 +20136,4 @@ angular.module('data.medical', [])
                 }]
         }
     }}
-    );
+);

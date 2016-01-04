@@ -1,5 +1,69 @@
 <ion-view view-title="Settings">
-    <ion-content>
-
+        <div class="list">
+            <div class="item item-divider">
+                Replication
+            </div>
+            <label class="item item-input">
+                <span class="input-label">Server URL</span>
+                <input type="text" ng-model="syncUrl" placeholder="URL">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Login Credentials</span>
+                <input type="text" ng-model="syncCredentials" placeholder="Credentials">
+            </label>
+            <div class="item item-divider">
+                Database
+            </div>
+            <label class="item item-input">
+                <span class="input-label">Name</span>
+                <span>{{settings.dbInfo.db_name}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Document Count</span>
+                <span>{{settings.dbInfo.doc_count}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Sequence Number</span>
+                <span>{{settings.dbInfo.update_seq}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Adapter</span>
+                <span>{{settings.dbInfo.adapter}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Attachments (IdxDB)</span>
+                <span>{{settings.dbInfo.idb_attachment_format}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">SQLite Plugin (WebSQL)</span>
+                <span>{{settings.dbInfo.sqlite_plugin}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Encoding (WebSQL)</span>
+                <span>{{settings.dbInfo.websql_encoding}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Backend (WebSQL)</span>
+                <span>{{settings.dbInfo.backend_adapter}}</span>
+            </label>
+            <label class="item item-button-right" ng-show="syncUrl">
+                <span class="input-label">Synchronize with server</span>
+                <button class="button button-outline button-small button-positive" ng-click="settings.replicate()">
+                    Sync
+                </button>
+            </label>
+            <label class="item item-button-right">
+                <span class="input-label">Create new database</span>
+                <button class="button button-outline button-small button-positive" ng-click="settings.createDb()">
+                    Create
+                </button>
+            </label>
+            <label class="item item-button-right">
+                <span class="input-label">Load demo data</span>
+                <button class="button button-outline button-small button-positive" ng-click="settings.loadDb()">
+                    Load
+                </button>
+            </label>
+        </div>
     </ion-content>
 </ion-view>
