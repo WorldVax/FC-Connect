@@ -1,7 +1,11 @@
 <ion-modal-view>
+    <ion-header-bar class="bar-balanced-900">
+        <div class="buttons">
+            <button class="button ion-close button-clear" ng-click="cancelEdit()"></button>
+        </div>
+    </ion-header-bar>
     <ion-content class="padding">
         <button class="button ion-checkmark button-positive button-fab button-fab-bottom-right" ng-click="finishEdit()"></button>
-        <button class="button ion-close button-right clear" ng-click="cancelEdit()"></button>
         <div class="list">
             <label class="item-input">
                 <span class="input-label">SSN</span>
@@ -31,7 +35,6 @@
                 <span class="input-label">Zip</span>
                 <input type="text " ng-model="vm.address.postalCode">
             </label>
-            {{vm._id}}#{{vm._rev}}
         </div>
     </ion-content>
 </ion-modal-view>

@@ -38,7 +38,7 @@ angular.module('app', ['ionic', 'ionic-material', 'app.controllers', 'app.servic
                 url: '/app',
                 abstract: true,
                 templateUrl: 'templates/menu.html',
-                controller:'MenuCtrl'
+                controller: 'MenuCtrl'
             })
 
             .state('app.home', {
@@ -68,6 +68,9 @@ angular.module('app', ['ionic', 'ionic-material', 'app.controllers', 'app.servic
                         templateUrl: 'templates/patient-view.html',
                         controller: 'PatientCtrl'
                     }
+                },
+                params: {
+                    patientId: null
                 }
             })
 

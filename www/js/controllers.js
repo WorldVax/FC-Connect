@@ -2,8 +2,12 @@
 
 angular.module('app.controllers', [])
 
-    .controller('MenuCtrl', function ($scope, PatientService) {
-        $scope.current = PatientService.current;
+    .controller('MenuCtrl', function ($scope, $state, PatientService) {
+        $scope.showPatient = function () {
+            $state.go('app.patient', {
+                    patientId: PatientService.currentId
+                });
+        };
     })
 
     .controller('HomeCtrl', function ($scope, $state) {
@@ -12,7 +16,7 @@ angular.module('app.controllers', [])
         }
     })
 
-    .controller('SearchCtrl', function ($scope, $timeout, $q, PatientService) {
+    .controller('SearchCtrl', function ($scope, $timeout, PatientService) {
         $scope.vm = {
             patients: [],
             query: ''
@@ -41,17 +45,20 @@ angular.module('app.controllers', [])
 
     .controller('PatientCtrl', function ($scope, $stateParams, $ionicModal, PatientService) {
 
+        $scope.isEditing = false;
+
         if ($stateParams.patientId) {
+            $scope.hasData = true;
             PatientService
                 .read($stateParams.patientId)
                 .then(function (result) {
+                    PatientService.currentId = result._id;
                     $scope.vm = result;
                 });
         } else {
-            $scope.vm = null;
+            delete (PatientService.currentId);
+            delete ($scope.vm);
         }
-
-        $scope.isEditing = false;
 
         $ionicModal.fromTemplateUrl('templates/patient-edit.html', {
             scope: $scope,
