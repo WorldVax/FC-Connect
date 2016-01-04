@@ -22,10 +22,6 @@ angular.module('app.controllers', [])
             query: ''
         };
 
-        function bind(model) {
-            $scope.vm.patients = model;
-        }
-
         var timer = false;
         $scope.$watch('vm.query', function () {
             if (timer) {
@@ -38,7 +34,9 @@ angular.module('app.controllers', [])
             if ($scope.vm.query) {
                 PatientService
                     .filter($scope.vm.query)
-                    .then(bind);
+                    .then(function (model) {
+                        $scope.vm.patients = model;
+                    });
             };
         }
     })
@@ -47,18 +45,20 @@ angular.module('app.controllers', [])
 
         $scope.isEditing = false;
 
-        if ($stateParams.patientId) {
-            $scope.hasData = true;
-            PatientService
-                .read($stateParams.patientId)
-                .then(function (result) {
-                    PatientService.currentId = result._id;
-                    $scope.vm = result;
-                });
-        } else {
-            delete (PatientService.currentId);
-            delete ($scope.vm);
-        }
+        $scope.$on('$ionicView.beforeEnter', function () {
+            if ($stateParams.patientId) {
+                $scope.hasData = true;
+                PatientService
+                    .read($stateParams.patientId)
+                    .then(function (result) {
+                        PatientService.currentId = result._id;
+                        $scope.vm = result;
+                    });
+            } else {
+                delete (PatientService.currentId);
+                delete ($scope.vm);
+            }
+        });
 
         $ionicModal.fromTemplateUrl('templates/patient-edit.html', {
             scope: $scope,
@@ -106,5 +106,11 @@ angular.module('app.controllers', [])
     })
 
     .controller('SettingsCtrl', function ($scope, SettingsService) {
+        $scope.$on('$ionicView.beforeEnter', function () {
+            if (!SettingsService.dbInfo) {
+                SettingsService.infoDb();
+            }
+
+        });
         $scope.settings = SettingsService;
     });
