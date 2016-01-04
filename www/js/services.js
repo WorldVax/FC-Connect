@@ -2,11 +2,11 @@
 
 angular.module('app.services', [])
 
-    .factory('PatientService', function ($log, pouchDB, DbSetup) {
+    .factory('PatientService', function ($log, pouchDB, SettingsService) {
 
         var current = null;
 
-        var db = pouchDB(DbSetup.options);
+        var db = pouchDB(SettingsService.dbOptions);
 
         return {
             filter: function (query) {
@@ -33,37 +33,45 @@ angular.module('app.services', [])
         };
     })
 
-    .factory('DbSetup', function (pouchDB, MedicalData) {
+    .factory('SettingsService', function ($log, pouchDB, MedicalData) {
 
         var self = {
-            options: {
+            dbOptions: {
                 name: 'medical.db',
                 adapter: 'websql'
             },
             dbInfo: {},
-            initialize: function () {
+            syncUrl: '',
+            syncCredentials: '',
+            createDb: function () {
                 // todo save the options as a doc after the db is initialized
-                console.log('Initialize database.');
-                pouchDB(self.options)
+                $log.log('Initialize database.');
+                pouchDB(self.dbOptions)
                     .destroy().then(function () {
-                        console.log('Load medical database design documents.');
-                        pouchDB(self.options)
+                        $log.log('Load medical database design documents.');
+                        pouchDB(self.dbOptions)
                             .bulkDocs(MedicalData.design_docs)
-                            .then(self.info)
+                            .then(self.infoDb)
                     });
             },
-            load: function () {
-                console.log('Loading fake patient data.');
-                pouchDB(self.options)
+            loadDb: function () {
+                $log.log('Loading fake patient data.');
+                pouchDB(self.dbOptions)
                     .bulkDocs(MedicalData.patients)
-                    .then(self.info)
+                    .then(self.infoDb)
             },
-            info: function () {
-                pouchDB(self.options)
+            infoDb: function () {
+                pouchDB(self.dbOptions)
                     .info()
-                    .then((function (info) { self.dbInfo = info; }))
+                    .then(function (info) { self.dbInfo = info; });
+            },
+            replicate: function () {
+                // TODO Replicate with the server located at syncUrl using the 
+                // syncCredentials for authentication
             }
         };
+
+        self.infoDb();
 
         return self;
     });

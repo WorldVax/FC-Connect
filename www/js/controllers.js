@@ -5,8 +5,8 @@ angular.module('app.controllers', [])
     .controller('MenuCtrl', function ($scope, $state, PatientService) {
         $scope.showPatient = function () {
             $state.go('app.patient', {
-                    patientId: PatientService.currentId
-                });
+                patientId: PatientService.currentId
+            });
         };
     })
 
@@ -105,6 +105,6 @@ angular.module('app.controllers', [])
         });
     })
 
-    .controller('SettingsCtrl', function ($scope, DbSetup) {
-
+    .controller('SettingsCtrl', function ($scope, SettingsService) {
+        $scope.settings = SettingsService;
     });
