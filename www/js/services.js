@@ -29,6 +29,9 @@ angular.module('app.services', [])
             save: function (doc) {
                 return db.put(doc)
                     .catch($log.error);
+            },
+            recordVaccination: function(cvx){
+                
             }
         };
     })

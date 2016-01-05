@@ -43,8 +43,6 @@ angular.module('app.controllers', [])
 
     .controller('PatientCtrl', function ($scope, $stateParams, $ionicModal, PatientService) {
 
-        $scope.isEditing = false;
-
         $scope.$on('$ionicView.beforeEnter', function () {
             if ($stateParams.patientId) {
                 $scope.hasData = true;
@@ -64,19 +62,35 @@ angular.module('app.controllers', [])
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function (modal) {
-            $scope.modal = modal;
+            $scope.editModal = modal;
         });
 
+        $ionicModal.fromTemplateUrl('templates/patient-vaccination.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.vaccinationModal = modal;
+        });
+
+        $scope.startVaccination = function () {
+            $scope.vaccinationModal.show();
+        };
+
+        $scope.finishVaccination = function () {
+            // TODO Read the selected vaccine and add to the model.
+            $scope.finishEdit();
+        };
+
         $scope.startEdit = function () {
-            $scope.isEditing = true;
-            $scope.modal.show();
+            $scope.editModal.show();
         };
 
         $scope.finishEdit = function () {
             PatientService
                 .save($scope.vm)
                 .then(function () {
-                    $scope.modal.hide();
+                    $scope.editModal.hide();
+                    $scope.vaccinationModal.hide();
                 });
         };
 
@@ -85,23 +99,23 @@ angular.module('app.controllers', [])
                 .read($scope.vm._id)
                 .then(function (result) {
                     $scope.vm = result;
-                    $scope.modal.hide();
+                    $scope.editModal.hide();
+                    $scope.vaccinationModal.hide();
                 });
         };
         
         //Cleanup the modal when we're done with it!
         $scope.$on('$destroy', function () {
-            $scope.modal.remove();
+            $scope.editModal.remove();
+            $scope.vaccinationModal.remove();
         });
         
         // Execute action on hide modal
         $scope.$on('modal.hidden', function () {
-            $scope.isEditing = false;
         });
         
         // Execute action on remove modal
         $scope.$on('modal.removed', function () {
-            $scope.isEditing = false;
         });
     })
 

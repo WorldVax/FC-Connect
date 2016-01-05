@@ -1,0 +1,18 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced-900" align-title="center">
+        <div class="title">{{vm.identity.lastName}}, {{vm.identity.firstName}}</div>
+        <button class="button ion-close button-clear" ng-click="cancelEdit()"></button>
+    </ion-header-bar>
+    <ion-header-bar class="bar-balanced bar-subheader" align-title="center">
+        <div class="title">Immunization</div>
+    </ion-header-bar>
+    <ion-content class="padding has-subheader">
+        <button class="button ion-checkmark button-positive button-fab button-fab-bottom-right" ng-click="finishEdit()"></button>
+        <div class="list">
+            <label class="item-input">
+                <span class="input-label">Vaccine</span>
+                <input type="text" ng-model="selectedVaccine">
+            </label>
+        </div>
+    </ion-content>
+</ion-modal-view>
