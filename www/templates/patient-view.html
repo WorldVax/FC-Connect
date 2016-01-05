@@ -13,7 +13,7 @@
                 Patient Information
             </ion-item>
             <div class="item">
-                <img ng-src="photos/{{vm._id}}.jpg" style="width: 64px; height: 64px" onerror="this.onerror=null;this.src='photos/unknown-90x100.jpg';">
+                <img ng-src="{{vm.identity.picture}}" style="width: 64px; height: 64px" onerror="this.onerror=null;this.src='img/unknown-90x100.jpg';">
                 <div class="row">
                     <div class="col-25">SSN</div>
                     <div class="col">{{vm.identity.ssn}}</div>
