@@ -1,6 +1,6 @@
 {
   "name": "FC-Connect",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "A mobile vaccination tracker.",
   "dependencies": {
     "gulp": "^3.5.6",
@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "bower": "^1.3.3",
+    "gulp-angular-templatecache": "^1.8.0",
     "gulp-util": "^2.2.14",
     "shelljs": "^0.3.0"
   },
