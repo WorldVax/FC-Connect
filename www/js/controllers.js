@@ -76,6 +76,11 @@ angular.module('app.controllers', [])
             $scope.vaccinationModal.show();
         };
 
+        $scope.finishVaccination = function () {
+            // TODO Read the selected vaccine and add to the model.
+            $scope.finishEdit();
+        };
+
         $scope.startEdit = function () {
             $scope.editModal.show();
         };
