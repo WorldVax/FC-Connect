@@ -29,11 +29,37 @@ angular.module('app.services', [])
             save: function (doc) {
                 return db.put(doc)
                     .catch($log.error);
-            },
-            recordVaccination: function(cvx){
-                
             }
         };
+    })
+
+    .factory('CdsiService', function ($log, CdsiData) {
+
+        var data = CdsiData;
+
+        var self = {
+            asOptions: function () {
+                return _.chain(CdsiData.cvx)
+                    .filter(function (item) {
+                        return item.VaccineStatus == 'Active' && !item.NonVaccine;
+                    })
+                    .map(function (item) {
+                        return {
+                            code: item.CvxCode,
+                            desc: item.Description,
+                            name: item.VaccineName,
+                            note: item.Note
+                        };
+                    })
+                    .sortBy(function(item)
+                    {
+                        return item.desc;
+                    })
+                    .value();
+            }
+        }
+
+        return self;
     })
 
     .factory('SettingsService', function ($log, pouchDB, MedicalData) {

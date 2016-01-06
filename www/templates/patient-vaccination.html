@@ -7,11 +7,23 @@
         <div class="title">Immunization</div>
     </ion-header-bar>
     <ion-content class="padding has-subheader">
-        <button class="button ion-checkmark button-positive button-fab button-fab-bottom-right" ng-click="finishEdit()"></button>
+        <button class="button ion-checkmark button-positive button-fab button-fab-bottom-right" ng-click="finishVaccination()"></button>
         <div class="list">
-            <label class="item-input">
+            <label class="item item-input">
+                <span class="input-label">Date of Administration</span>
+                <input type="date" ng-model="vaccination.dateAdministered">
+            </label>
+            <label class="item item-input item-select">
                 <span class="input-label">Vaccine</span>
-                <input type="text" ng-model="selectedVaccine">
+                <select ng-model="vaccination.selectedCvx" ng-options="item.desc for item in vaccination.cvxOptions"> </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Description</span>
+                <div class="item item-text-wrap">{{vaccination.selectedCvx.name}}</div>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Note</span>
+                <div class="item item-text-wrap">{{vaccination.selectedCvx.note}}</div>
             </label>
         </div>
     </ion-content>
