@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.fcconnect728371" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>FC-Connect</name>
-  <description>&#xD;&#xD;&#xD;
-        A mobile vaccination tracker.&#xD;&#xD;
+  <description>&#xD;&#xD;&#xD;&#xD;
+        A mobile vaccination tracker.&#xD;&#xD;&#xD;
     </description>
-  <author email="ansofive@gmail.com" href="http://worldvax.org/">&#xD;&#xD;&#xD;
-      Dennis Dunn&#xD;&#xD;&#xD;
+  <author email="ansofive@gmail.com" href="http://worldvax.org/">&#xD;&#xD;&#xD;&#xD;
+      Dennis Dunn&#xD;&#xD;&#xD;&#xD;
     </author>
   <content src="index.html"/>
   <access origin="*"/>
