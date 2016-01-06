@@ -41,7 +41,13 @@ angular.module('app.controllers', [])
         }
     })
 
-    .controller('PatientCtrl', function ($scope, $stateParams, $ionicModal, PatientService) {
+    .controller('PatientCtrl', function ($scope, $stateParams, $ionicModal, PatientService, CdsiService) {
+
+        $scope.vaccination = {
+            cvxOptions: CdsiService.asOptions(),
+            selectedCvx: {},
+            administeredDate: null
+        };
 
         $scope.$on('$ionicView.beforeEnter', function () {
             if ($stateParams.patientId) {
@@ -73,11 +79,17 @@ angular.module('app.controllers', [])
         });
 
         $scope.startVaccination = function () {
+            $scope.vaccination.dateAdministered =  new Date();
+            $scope.vaccination.selectedCvx = $scope.vaccination.cvxOptions[0];
             $scope.vaccinationModal.show();
         };
 
         $scope.finishVaccination = function () {
-            // TODO Read the selected vaccine and add to the model.
+            $scope.vm.medical.series.push({
+                Cvx: $scope.vaccination.selectedCvx.code,
+                VaccineName: $scope.vaccination.selectedCvx.desc,
+                DateAdministered: $scope.vaccination.dateAdministered
+            });
             $scope.finishEdit();
         };
 

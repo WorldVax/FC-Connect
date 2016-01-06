@@ -1,7 +1,9 @@
 "use strict";
 
+angular.module('templates',[]);
+
 // Ionic Starter App
-angular.module('app', ['ionic', 'ionic-material', 'app.controllers', 'app.services', 'data.medical', 'pouchdb'])
+angular.module('app', ['ionic', 'ionic-material', 'app.controllers', 'app.services', 'data.medical', 'data.cdsi','pouchdb'])
     .constant('_', window._)
 
     .run(function ($ionicPlatform) {
