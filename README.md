@@ -7,25 +7,29 @@ technologies like HTML5, CSS, and Javascript.
 
 ## Toolchain
 
-Our tool set pulls from the nodejs environment, we are using tools
-such as node, npm, bower, gulp, and mocha.
+Our tool set pulls from the nodejs environment.
 
 ## Quick(ish) Start
 
-* Install nodejs. On Windows, just use the installer. If you are on
-Linux, use the packages provided by node.org and not the package
-repository of your distribution.
-* Install bower globally.
+* Install nodejs from nodejs.org. Windows users will download and run the installer while
+Linux users will add the ppa and then use apt-get to install the package.
 ```
-npm install -g bower
+sudo apt-get install -y nodejs
 ```
-* Install gulp and mocha globally.
+* Download and install the Andoird SDK.
+* Use npm to install the tools globally.
 ```
-npm install -g gulp mocha
+npm install -g bower gulp mocha ionic cordova
 ```
-* Run
+* Run the following commands in a shell to setup for the build.
 ```
 npm install
 bower install
 gulp
+ionic platform add android
+ionic resources android
+```
+* Build the app!
+```
+ionic build android
 ```
