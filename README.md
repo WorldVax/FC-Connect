@@ -15,6 +15,9 @@ Our tool set pulls from the nodejs environment.
   * Test runner - Karma
   * Test framework - Jasmine
 
+  http://karma-runner.github.io/0.13/index.html
+  http://jasmine.github.io/
+
 * Running tests
 ```
 karma start
