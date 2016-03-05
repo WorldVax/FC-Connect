@@ -9,6 +9,23 @@ technologies like HTML5, CSS, and Javascript.
 
 Our tool set pulls from the nodejs environment.
 
+##Unit tests
+
+* Testing Suite
+  * Test runner - Karma
+  * Test framework - Jasmine
+
+  http://karma-runner.github.io/0.13/index.html
+  http://jasmine.github.io/
+
+* Running tests
+```
+karma start
+```
+
+* Viewing Unit Test Coverage report
+  * The coverage report will be generated after you start karma and will be located in /coverage/Chrome*/index.html
+
 ## Quick(ish) Start
 
 * Install nodejs from nodejs.org. Windows users will download and run the installer while

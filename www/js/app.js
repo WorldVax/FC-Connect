@@ -1,6 +1,8 @@
 "use strict";
 
 angular.module('templates',[]);
+angular.module('app.controllers',[]);
+angular.module('app.services',[]);
 
 // Ionic Starter App
 angular.module('app', ['ionic', 'ionic-material', 'app.controllers', 'app.services', 'data.medical', 'data.cdsi','pouchdb'])
@@ -25,8 +27,8 @@ angular.module('app', ['ionic', 'ionic-material', 'app.controllers', 'app.servic
     .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
         if (ionic.Platform.isAndroid())
-            $ionicConfigProvider.scrolling.jsScrolling(false);     
-    
+            $ionicConfigProvider.scrolling.jsScrolling(false);
+
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
         // Set up the various states which the app can be in.

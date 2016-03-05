@@ -1,0 +1,10 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced-900" align-title="center">
+        <div class="title">{{vm.identity.lastName}}, {{vm.identity.firstName}}</div>
+        <button class="button ion-edit button-clear" ng-click="updateImage()"></button>
+    </ion-header-bar>
+    <ion-content class="">
+        <button class="button ion-checkmark button-positive button-fab button-fab-bottom-right" ng-click="finishImageUpdate()"></button>
+        <img ng-src="{{vm.identity.picture}}" style="width: 100%" onerror="this.onerror=null;this.src='img/unknown-90x100.jpg';">
+    </ion-content>
+</ion-modal-view>
