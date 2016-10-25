@@ -11,3 +11,4 @@ resources/android
 resources/ios
 *.swp
 .DS_Store
+!www/lib/templates.js
