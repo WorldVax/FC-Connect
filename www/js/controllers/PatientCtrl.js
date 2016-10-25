@@ -2,10 +2,10 @@
 
 angular.module('app.controllers')
 
-.controller('PatientCtrl', function ($scope, $stateParams, $ionicModal, PatientService, CdsiService, CameraService) {
+.controller('PatientCtrl', function ($scope, $stateParams, $ionicModal, PatientService, CvxService, CameraService) {
 
 		$scope.vaccination = {
-				cvxOptions: CdsiService.asOptions(),
+				cvxOptions: CvxService.asOptions(),
 				selectedCvx: {},
 				dateAdministered: null
 		};

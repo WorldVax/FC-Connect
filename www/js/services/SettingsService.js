@@ -5,34 +5,27 @@ angular.module('app.services')
     .factory('SettingsService', function ($log, pouchDB, MedicalData) {
 
         var self = {
-            dbOptions: {
-                name: 'medical.db',
-                adapter: 'websql'
-            },
+            dbName: 'medical.db',
             dbInfo: {},
             syncUrl: '',
             syncCredentials: '',
             createDb: function () {
                 // todo save the options as a doc after the db is initialized
                 $log.log('Initialize database.');
-                pouchDB(self.dbOptions)
-                    .destroy().then(function () {
+                pouchDB(self.dbName)
+                    .destroy()
+                    .then(function () {
                         $log.log('Load medical database design documents.');
-                        pouchDB(self.dbOptions)
+                        pouchDB(self.dbName)
                             .bulkDocs(MedicalData.design_docs)
                             .then(self.infoDb)
                     });
             },
             loadDb: function () {
                 $log.log('Loading fake patient data.');
-                pouchDB(self.dbOptions)
+                pouchDB(self.dbName)
                     .bulkDocs(MedicalData.patients)
                     .then(self.infoDb)
-            },
-            infoDb: function () {
-                pouchDB(self.dbOptions)
-                    .info()
-                    .then(function (info) { self.dbInfo = info; });
             },
             replicate: function () {
                 // TODO Replicate with the server located at syncUrl using the
@@ -40,7 +33,9 @@ angular.module('app.services')
             }
         };
 
-        self.infoDb();
+        pouchDB(self.dbName)
+            .info()
+            .then(function (info) { self.dbInfo = info; });
 
         return self;
     });

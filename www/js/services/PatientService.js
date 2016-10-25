@@ -5,8 +5,8 @@ angular.module('app.services')
     .factory('PatientService', function ($log, pouchDB, SettingsService) {
 
         var current = null;
-
-        var db = pouchDB(SettingsService.dbOptions);
+        
+        var db = pouchDB(SettingsService.dbName);
 
         return {
             filter: function (query) {
