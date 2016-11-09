@@ -5,10 +5,10 @@ node_modules/
 platforms/
 plugins/
 coverage/
-www/lib
-www/attachments
-resources/android
-resources/ios
+www/lib/
+www/attachments/
+resources/android/
+resources/ios/
 *.swp
 .DS_Store
 !www/lib/templates.js

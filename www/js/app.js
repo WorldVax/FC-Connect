@@ -42,7 +42,7 @@ angular.module('app', ['ionic', 'app.refdata', 'app.services', 'app.controllers'
         views: {
           'menuContent': {
             templateUrl: 'templates/home.html',
-            controller: 'HomeCtrl'
+            controller: 'SearchCtrl'
           }
         }
       })
