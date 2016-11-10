@@ -14,7 +14,7 @@
 
 	<!-- ionic/angularjs js -->
 	<script src="lib/ionic/js/ionic.bundle.js"></script>
-	<script src="lib/templates.js"></script>
+	<!--<script src="lib/templates.js"></script>-->
 
 	<!-- Third party libraries -->
 	<script src="lib/underscore/underscore-min.js"></script>
@@ -30,6 +30,7 @@
 	<script src="js/data/cvx.js"></script>
 	<script src="js/services/CameraService.js"></script>
 	<script src="js/services/PatientService.js"></script>
+	<script src="js/services/SearchService.js"></script>
 	<script src="js/services/SettingsService.js"></script>
 	<script src="js/services/CvxService.js"></script>
 	<script src="js/controllers/HomeCtrl.js"></script>
@@ -40,10 +41,15 @@
 </head>
 
 <body ng-app="app" class="platform-android">
-<!--	
-		<ion-nav-bar>
+	<!--<ion-nav-bar>
 		<ion-nav-buttons side="left">
-			<button class="button icon ion-navicon button-clear button-positive"></button>
+			<button class="button icon ion-navicon button-clear button-positive" menu-toggle="left"></button>
+		</ion-nav-buttons>
+		<ion-nav-buttons side="right">
+			<label class="item item-input">
+				<i class="icon ion-search placeholder-icon"></i>
+				<input type="search" placeholder="Search for given name or surname." ng-model="vm.query">
+			</label>
 		</ion-nav-buttons>
 	</ion-nav-bar>-->
 	<ion-nav-view>

@@ -34,15 +34,14 @@ angular.module('app', ['ionic', 'app.refdata', 'app.services', 'app.controllers'
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
-        controller: 'MenuCtrl'
+        controller: 'MenuController'
       })
 
       .state('app.home', {
         url: '/home',
         views: {
           'menuContent': {
-            templateUrl: 'templates/home.html',
-            controller: 'SearchCtrl'
+            templateUrl: 'templates/home.html'
           }
         }
       })
@@ -52,7 +51,7 @@ angular.module('app', ['ionic', 'app.refdata', 'app.services', 'app.controllers'
         views: {
           'menuContent': {
             templateUrl: 'templates/search.html',
-            controller: 'SearchCtrl'
+            controller: 'SearchController'
           }
         }
       })
@@ -62,7 +61,7 @@ angular.module('app', ['ionic', 'app.refdata', 'app.services', 'app.controllers'
         views: {
           'menuContent': {
             templateUrl: 'templates/patient-view.html',
-            controller: 'PatientCtrl'
+            controller: 'PatientController'
           }
         },
         params: {
@@ -75,7 +74,7 @@ angular.module('app', ['ionic', 'app.refdata', 'app.services', 'app.controllers'
         views: {
           'menuContent': {
             templateUrl: 'templates/settings.html',
-            controller: 'SettingsCtrl'
+            controller: 'SettingsController'
           }
         }
       });

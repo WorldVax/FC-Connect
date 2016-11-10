@@ -2,7 +2,7 @@
 
 angular.module('app.controllers')
 
-.controller('PatientCtrl', function ($scope, $stateParams, $ionicModal, PatientService, CvxService, CameraService) {
+.controller('PatientController', function ($scope, $stateParams, $ionicModal, PatientService, CvxService, CameraService) {
 
 		$scope.vaccination = {
 				cvxOptions: CvxService.asOptions(),

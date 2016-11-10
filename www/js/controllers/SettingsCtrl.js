@@ -2,7 +2,7 @@
 
 angular.module('app.controllers')
 
-.controller('SettingsCtrl', function ($scope, SettingsService) {
+.controller('SettingsController', function ($scope, SettingsService) {
 	$scope.$on('$ionicView.beforeEnter', function () {
 			if (!SettingsService.dbInfo) {
 					SettingsService.infoDb();
