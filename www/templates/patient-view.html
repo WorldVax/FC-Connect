@@ -5,12 +5,13 @@
 	</ion-nav-title>
 	<ion-nav-buttons side="secondary">
 
-		<button ng-show="vm._id" class="button button-clear button-positive padding" ng-click="startEdit()">Edit</button>
 	</ion-nav-buttons>
 	<ion-content class="padding">
 		<div ng-show="vm._id" class="list">
-			<ion-item class="item item-divider">
+			<ion-item class="item item-divider item-icon-right">
 				Patient Information
+					<button ng-show="vm._id" class="button button-icon icon ion-edit button-positive button-clear" ng-click="startEdit()"></button>
+	
 			</ion-item>
 			<div class="item">
 				<img ng-src="{{vm.identity.picture}}" style="width: 64px; height: 64px" onerror="this.onerror=null;this.src='img/unknown-90x100.jpg';"
