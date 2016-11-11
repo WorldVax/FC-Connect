@@ -3,15 +3,11 @@
 		<span ng-show="vm._id">{{vm.identity.lastName}}, {{vm.identity.firstName}}</span>
 		<span ng-hide="vm._id">FC-Connect</span>
 	</ion-nav-title>
-	<ion-nav-buttons side="secondary">
-
-	</ion-nav-buttons>
 	<ion-content class="padding">
 		<div ng-show="vm._id" class="list">
-			<ion-item class="item item-divider item-icon-right">
+			<ion-item class="item item-divider item-icon-right padding">
 				Patient Information
-					<button ng-show="vm._id" class="button button-icon icon ion-edit button-positive button-clear" ng-click="startEdit()"></button>
-	
+				<button ng-show="vm._id" class="button button-icon icon ion-edit button-positive button-clear" ng-click="startEdit()"></button>
 			</ion-item>
 			<div class="item">
 				<img ng-src="{{vm.identity.picture}}" style="width: 64px; height: 64px" onerror="this.onerror=null;this.src='img/unknown-90x100.jpg';"
@@ -76,9 +72,9 @@
 					<div class="item item-text-wrap">{{rec.text}}</div>
 				</ion-item>
 			</ion-list>
-			<ion-item class="item">
-                
-				Immunizations <button ng-show="vm._id" class="button button-icon icon ion-plus button-positive" ng-click="startVaccination()"></button>
+			<ion-item class="item item-divider item-icon-right">
+				Immunizations
+				<button ng-show="vm._id" class="button button-icon icon ion-plus-round button-positive button-clear padding" ng-click="startVaccination()"></button>
 			</ion-item>
 			<ion-list>
 				<ion-item ng-repeat="rec in vm.medical.series">

@@ -1,11 +1,10 @@
 <ion-modal-view>
-    <ion-header-bar class="bar-balanced-900" align-title="center">
-        <div class="title">{{vm.identity.lastName}}, {{vm.identity.firstName}}</div>
-        <button class="button ion-close button-clear" ng-click="cancelEdit()"></button>
-    </ion-header-bar>
-    <ion-content class="padding">
-        <button class="button ion-checkmark button-positive button-fab button-fab-bottom-right" ng-click="finishEdit()"></button>
+    <ion-content >
         <div class="list">
+            <ion-item class="item item-divider item-icon-right">
+                {{vm.identity.lastName}}, {{vm.identity.firstName}}
+                <button class="button button-icon icon ion-checkmark-round button-positive button-clear padding" ng-click="finishEdit()"></button>
+            </ion-item>
             <label class="item-input">
                 <span class="input-label">SSN</span>
                 <input type="text" ng-model="vm.identity.ssn">
