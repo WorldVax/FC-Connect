@@ -47,6 +47,16 @@ angular.module('app', ['ionic', 'app.refdata', 'app.services', 'app.controllers'
         }
       })
 
+      .state('app.login', {
+        url: '/login',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/login.html',
+            controller: 'LoginCtrl'
+          }
+        }
+      })
+
       .state('app.search', {
         url: '/search',
         views: {
@@ -81,5 +91,6 @@ angular.module('app', ['ionic', 'app.refdata', 'app.services', 'app.controllers'
       });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/home');
+     $urlRouterProvider.otherwise('/app/login');
+
   });

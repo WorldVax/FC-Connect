@@ -6,6 +6,7 @@ angular.module('app.refdata')
             "design_docs": {
                 "docs": [{
                     _id: '_design/patients',
+                    username:'_desin/logins',
                     views: {
                         by_name: {
                             map: function f(doc) {
@@ -14,10 +15,30 @@ angular.module('app.refdata')
                                     emit(doc.identity.firstName.toLowerCase());
                                 }
                             }.toString()
+                        },
+                        by_login: {
+                            map: function f(doc) {
+                                if (doc.docType == 'login') {
+                                    emit(doc.username.toLowerCase());
+                                    emit(doc.password);
+                                }
+                            }.toString()
                         }
                     }
                 }]
             },
+            "logins":{
+                "docs":[{
+                    "docType":"login",
+                    "username":"nrawal",
+                    "password":"abc123"
+                },
+                {
+                    "docType":"login",
+                    "username":"cparmar",
+                    "password":"xyz456"
+                }
+            ]},
             "patients": {
                 "docs": [{
                     "contact": {

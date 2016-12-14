@@ -1,0 +1,24 @@
+<ion-view view-title="Login">
+    <ion-pane side-menu-content draggable="false">
+    <ion-content class="padding col-offset-20 col-60">
+        <i class="icon placeholder-icon"></i>  
+        <span class="input-label">Username</span>
+        <label class="item item-input">
+            <input type="text" name="username" placeholder="Username" ng-model="username.value" ng-required="true"/>
+        </label>      
+        <br/>
+        <span class="input-label">Password</span>
+        <label class="item item-input">
+            <input type="password" name="password" placeholder="Password" ng-model="password.value" ng-required="true"/>
+        </label>
+        <br/>
+        <br/>
+        <label class="item item-button-left">
+            <button class="button button-outline button-small button-positive" ng-disabled="form.$invalid" ng-click="validateLogin()">
+                    Submit
+            </button>
+            <br/>
+        </label>
+    </ion-content>
+    </ion-pane>     
+</ion-view>
