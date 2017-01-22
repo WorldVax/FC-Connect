@@ -25,11 +25,11 @@ angular.module('app.services')
             }).catch($log.error)
         },
         pin: function(model) {
-            model.pinned = true;
+            model.isPinned = true;
             service.context.selected.push(model);
         },
         unpin: function(model) {
-            model.pinned = false;
+            model.isPinned = false;
             var idx = service.context.selected.indexOf(model);
             if (idx > -1) { service.context.selected.splice(idx, 1); }
         }

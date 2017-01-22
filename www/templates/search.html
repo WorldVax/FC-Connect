@@ -3,13 +3,17 @@
         <ion-list>
             <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="model in context.results track by $index" type="item-text-wrap">
                 <a class="button-clear" href="#/app/patient/{{model._id}}">
-                    <img ng-src="{{model.identity.picture}}" onerror="this.onerror=null;this.src='img/unknown-90x100.jpg';">
-                    <div>
-                        <h2>{{model.identity.lastName}}</h2>
-                        <p>{{model.identity.firstName}}</p>
+                    <div class="row">
+                        <div class="col-10">
+                            <img ng-src="{{model.identity.picture}}" onerror="this.onerror=null;this.src='img/unknown-90x100.jpg';">
+                        </div>
+                        <div class="col">
+                            <h1>{{model.identity.lastName}}</h1>
+                            <h2>{{model.identity.firstName}}</h2>
+                        </div>
                     </div>
                 </a>
-                <button class="button button-icon icon ion-pin icon-accessory" ng-click="pin(model)"></button>
+                <a class="button button-icon icon ion-pin icon-right" ng-class="{'positive':model.isPinned}" ng-click="pin(model)"></a>
             </ion-item>
         </ion-list>
     </ion-content>
