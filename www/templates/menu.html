@@ -1,38 +1,55 @@
 <ion-side-menus enable-menu-with-back-views="true">
-	<ion-side-menu-content>
-		<ion-nav-bar class="bar-balanced-900" ng-class="{expanded: isExpanded, 'has-header-fab-left': hasHeaderFabLeft, 'has-header-fab-right': hasHeaderFabRight}"
-			align-title="center">
-			<ion-nav-buttons side="left">
-				<button class="button button-icon button-clear ion-navicon-round button-positive" menu-toggle="left"></button>
-			</ion-nav-buttons>
-			<ion-nav-buttons side="right">
-				<label class="item item-input">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-positive" ng-class="{expanded: isExpanded, 'has-header-fab-left': hasHeaderFabLeft, 'has-header-fab-right': hasHeaderFabRight}" align-title="center">
+
+            <ion-nav-buttons side="left">
+                <label class="item item-input">
 				<i class="icon ion-search placeholder-icon"></i>
 				<input type="search" placeholder="Search for given name or surname." ng-controller="SearchController" ng-model="context.query">
 			</label>
-			</ion-nav-buttons>
-		</ion-nav-bar>
-		<ion-nav-view name="menuContent"></ion-nav-view>
-	</ion-side-menu-content>
-	<ion-side-menu side="left">
-		<ion-header-bar class="bar-balanced-900" ng-class="{expanded: isExpanded, 'has-header-fab-left': hasHeaderFabLeft, 'has-header-fab-right': hasHeaderFabRight}"
-			align-title="center">
-		</ion-header-bar>
-		<ion-content class="stable-bg">
-			<ion-list>
-				<ion-item menu-close href="#/app/home">
-					Home
-				</ion-item>
-				<ion-item menu-close href="#/app/search">
-					Search
-				</ion-item>
-				<ion-item menu-close ng-click="showPatient()">
-					Current patient
-				</ion-item>
-				<ion-item menu-close href="#/app/settings">
-					Settings
-				</ion-item>
-			</ion-list>
-		</ion-content>
-	</ion-side-menu>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <a class="button button-icon button-clear ion-android-settings" href="#/app/settings"></a>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+
+        <ion-nav-view name="menuContent"></ion-nav-view>
+
+        <div class="tabs tabs-icon-only">
+            <a class="tab-item" ng-click="showPatient()">
+                <i class="icon ion-android-person"></i>
+            </a>
+            <a class="tab-item">
+                <i class="icon ion-android-person-add"></i>
+            </a>
+            <a class="tab-item" href="#/app/pinned">
+                <i class="icon ion-pin"></i>
+            </a>
+            <a class="tab-item" href="#/app/search">
+                <i class="icon ion-search"></i>
+            </a>
+        </div>
+
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <ion-header-bar class="bar-positive" ng-class="{expanded: isExpanded, 'has-header-fab-left': hasHeaderFabLeft, 'has-header-fab-right': hasHeaderFabRight}" align-title="center">
+        </ion-header-bar>
+        <ion-content class="stable-bg">
+            <ion-list>
+                <ion-item menu-close href="#/app/home">
+                    Home
+                </ion-item>
+                <ion-item menu-close href="#/app/search">
+                    Search
+                </ion-item>
+                <ion-item menu-close ng-click="showPatient()">
+                    Current patient
+                </ion-item>
+                <ion-item menu-close href="#/app/settings">
+                    Settings
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
 </ion-side-menus>

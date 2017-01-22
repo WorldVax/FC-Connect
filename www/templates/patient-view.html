@@ -1,90 +1,89 @@
 <ion-view>
-	<ion-nav-title>
-		<span ng-show="vm._id">{{vm.identity.lastName}}, {{vm.identity.firstName}}</span>
-		<span ng-hide="vm._id">FC-Connect</span>
-	</ion-nav-title>
-	<ion-content class="padding">
-		<div ng-show="vm._id" class="list">
-			<ion-item class="item item-divider item-icon-right padding">
-				Patient Information
-				<button ng-show="vm._id" class="button button-icon icon ion-edit button-positive button-clear" ng-click="startEdit()"></button>
-			</ion-item>
-			<div class="item">
-				<img ng-src="{{vm.identity.picture}}" style="width: 64px; height: 64px" onerror="this.onerror=null;this.src='img/unknown-90x100.jpg';"
-					ng-click="viewImage()">
-				<div class="row">
-					<div class="col-25">SSN</div>
-					<div class="col">{{vm.identity.ssn}}</div>
-				</div>
-				<div class="row">
-					<div class="col-25">Gender</div>
-					<div class="col">{{vm.identity.gender}}</div>
-				</div>
-				<div class="row">
-					<div class="col-25">Birth Date</div>
-					<div class="col">{{vm.identity.dob}}</div>
-				</div>
-				<div class="row">
-					<div class="col-25">Street</div>
-					<div class="col">{{vm.address.street}}</div>
-				</div>
-				<div class="row">
-					<div class="col-25">City</div>
-					<div class="col">{{vm.address.city}}</div>
-				</div>
-				<div class="row">
-					<div class="col-25">State</div>
-					<div class="col">{{vm.address.state}}</div>
-				</div>
-				<div class="row">
-					<div class="col-25">Postal Code</div>
-					<div class="col">{{vm.address.postalCode}}</div>
-				</div>
-				<div class="row">
-					<div class="col-25">Phone</div>
-					<div class="col">
-						<div>
-							<div class="row" ng-repeat="(key, value) in vm.contact.phone">
-								<div class="col">{{key}}</div>
-								<div class="col">{{value}}</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-25">Email</div>
-					<div class="col">
-						<div>
-							<div class="row" ng-repeat="(key, value) in vm.contact.email">
-								<div class="col">{{key}}</div>
-								<div class="col">{{value}}</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<ion-item class="item item-divider">
-				Medical History
-			</ion-item>
-			<ion-list>
-				<ion-item ng-repeat="rec in vm.medical.history" class="card">
-					<div class="item item-divider">Code: {{rec.code}} CodeSys: {{rec.codeSys}}</div>
-					<div class="item item-text-wrap">{{rec.text}}</div>
-				</ion-item>
-			</ion-list>
-			<ion-item class="item item-divider item-icon-right">
-				Immunizations
-				<button ng-show="vm._id" class="button button-icon icon ion-plus-round button-positive button-clear padding" ng-click="startVaccination()"></button>
-			</ion-item>
-			<ion-list>
-				<ion-item ng-repeat="rec in vm.medical.series">
-					<div class="item">CVX Code: {{rec.Cvx}} Name: {{rec.VaccineName}} </div>
-					<div class="item item-text-wrap">Date Administered: {{rec.DateAdministered}}</div>
-				</ion-item>
-			</ion-list>
-		</div>
-		<div ng-hide="vm._id">
-			No patient record has been selected.
-		</div>
-	</ion-content>
+    <ion-nav-title>
+        <span ng-show="vm._id"></span>
+        <span ng-hide="vm._id">FC-Connect</span>
+    </ion-nav-title>
+    <ion-content class="padding">
+        <div ng-show="vm._id" class="list">
+            <ion-item class="item item-divider item-icon-right padding">
+                {{vm.identity.lastName}}, {{vm.identity.firstName}}
+                <button ng-show="vm._id" class="button button-icon icon ion-edit button-positive button-clear" ng-click="startEdit()"></button>
+            </ion-item>
+            <div class="item">
+                <img ng-src="{{vm.identity.picture}}" style="width: 64px; height: 64px" onerror="this.onerror=null;this.src='img/unknown-90x100.jpg';" ng-click="viewImage()">
+                <div class="row">
+                    <div class="col-25">SSN</div>
+                    <div class="col">{{vm.identity.ssn}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-25">Gender</div>
+                    <div class="col">{{vm.identity.gender}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-25">Birth Date</div>
+                    <div class="col">{{vm.identity.dob}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-25">Street</div>
+                    <div class="col">{{vm.address.street}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-25">City</div>
+                    <div class="col">{{vm.address.city}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-25">State</div>
+                    <div class="col">{{vm.address.state}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-25">Postal Code</div>
+                    <div class="col">{{vm.address.postalCode}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-25">Phone</div>
+                    <div class="col">
+                        <div>
+                            <div class="row" ng-repeat="(key, value) in vm.contact.phone">
+                                <div class="col">{{key}}</div>
+                                <div class="col">{{value}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">Email</div>
+                    <div class="col">
+                        <div>
+                            <div class="row" ng-repeat="(key, value) in vm.contact.email">
+                                <div class="col">{{key}}</div>
+                                <div class="col">{{value}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ion-item class="item item-divider">
+                Medical History
+            </ion-item>
+            <ion-list>
+                <ion-item ng-repeat="rec in vm.medical.history" class="card">
+                    <div class="item item-divider">Code: {{rec.code}} CodeSys: {{rec.codeSys}}</div>
+                    <div class="item item-text-wrap">{{rec.text}}</div>
+                </ion-item>
+            </ion-list>
+            <ion-item class="item item-divider item-icon-right">
+                Immunizations
+                <button ng-show="vm._id" class="button button-icon icon ion-plus-round button-positive button-clear padding" ng-click="startVaccination()"></button>
+            </ion-item>
+            <ion-list>
+                <ion-item ng-repeat="rec in vm.medical.series">
+                    <div class="item">CVX Code: {{rec.Cvx}} Name: {{rec.VaccineName}} </div>
+                    <div class="item item-text-wrap">Date Administered: {{rec.DateAdministered}}</div>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div ng-hide="vm._id">
+            No patient record has been selected.
+        </div>
+    </ion-content>
 </ion-view>

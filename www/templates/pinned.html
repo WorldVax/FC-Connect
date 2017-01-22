@@ -1,7 +1,7 @@
 <ion-view>
     <ion-content>
         <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="model in context.results track by $index" type="item-text-wrap">
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="model in context.selected track by $index" type="item-text-wrap">
                 <a class="button-clear" href="#/app/patient/{{model._id}}">
                     <img ng-src="{{model.identity.picture}}" onerror="this.onerror=null;this.src='img/unknown-90x100.jpg';">
                     <div>
