@@ -2,6 +2,7 @@
 *~
 npm-debug.log
 node_modules/
+bower_components/
 platforms/
 plugins/
 coverage/
@@ -12,3 +13,5 @@ resources/ios/
 *.swp
 .DS_Store
 !www/lib/templates.js
+.vscode/
+res/
