@@ -8,4 +8,9 @@ angular.module('app.controllers')
             patientId: PatientService.currentId
         });
     };
+    $scope.addPatient = function () {
+        $state.go('app.addpatient', {
+            patientId: null
+        });
+    }
 });
