@@ -1,0 +1,22 @@
+~*
+*~
+npm-debug.log
+node_modules/
+bower_components/
+platforms/
+plugins/
+coverage/
+www/lib/
+www/attachments/
+resources/android/
+resources/ios/
+*.swp
+.DS_Store
+!www/lib/templates.js
+<<<<<<< HEAD
+.vscode/
+res/
+=======
+res/
+.vscode/
+>>>>>>> develop
