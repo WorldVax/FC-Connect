@@ -2,35 +2,43 @@
     <ion-content >
         <div class="list">
             <ion-item class="item item-divider item-icon-right">
-                {{vm.identity.lastName}}, {{vm.identity.firstName}}
+                <span ng-show="vm._id">{{vm.identity.lastName}}, {{vm.identity.firstName}}</span><span ng-hide="vm._id">&lt;{{txt("NEW_PATIENT")}}&gt;</span>
                 <button class="button button-icon icon ion-checkmark-round button-positive button-clear padding" ng-click="finishEdit()"></button>
             </ion-item>
             <label class="item-input">
-                <span class="input-label">SSN</span>
-                <input type="text" ng-model="vm.identity.ssn">
+                <span class="input-label">{{txt("FIRST_NAME")}}</span>
+                <input type="text" ng-model="vm.identity.firstName">
             </label>
             <label class="item-input">
-                <span class="input-label">Gender</span>
+                <span class="input-label">{{txt("LAST_NAME")}}</span>
+                <input type="text" ng-model="vm.identity.lastName">
+            </label>
+            <label class="item-input">
+                <span class="input-label">{{txt("GOVERNMENT_ID")}}</span>
+                <input type="text" ng-model="vm.identity.governmentId">
+            </label>
+            <label class="item-input">
+                <span class="input-label">{{txt("GENDER")}}</span>
                 <input type="text" ng-model="vm.identity.gender">
             </label>
             <label class="item-input">
-                <span class="input-label">Birth Date</span>
+                <span class="input-label">{{txt("BIRTH_DATE")}}</span>
                 <input type="text" ng-model="vm.identity.dob">
             </label>
             <label class="item-input">
-                <span class="input-label">Street</span>
+                <span class="input-label">{{txt("STREET")}}</span>
                 <input type="text" ng-model="vm.address.street">
             </label>
             <label class="item-input">
-                <span class="input-label">City</span>
+                <span class="input-label">{{txt("CITY")}}</span>
                 <input type="text" ng-model="vm.address.city">
             </label>
             <label class="item-input">
-                <span class="input-label">State</span>
+                <span class="input-label">{{txt("STATE")}}</span>
                 <input type="text" ng-model="vm.address.state">
             </label>
             <label class="item-input">
-                <span class="input-label">Zip</span>
+                <span class="input-label">{{txt("POSTAL_CODE")}}</span>
                 <input type="text" ng-model="vm.address.postalCode">
             </label>
         </div>

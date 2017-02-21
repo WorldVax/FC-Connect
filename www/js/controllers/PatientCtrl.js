@@ -2,7 +2,10 @@
 
 angular.module('app.controllers')
 
-.controller('PatientController', function ($scope, $stateParams, $ionicModal, PatientService, CvxService, CameraService) {
+.controller('PatientController', function ($scope, $stateParams, $ionicModal, PatientService, TextService, CvxService, CameraService) {
+		$scope.txt = TextService.get;
+
+		$scope.fmt = TextService.formatText;
 
 		$scope.vaccination = {
 				cvxOptions: CvxService.asOptions(),
@@ -20,8 +23,9 @@ angular.module('app.controllers')
 										$scope.vm = result;
 								});
 				} else {
-						delete (PatientService.currentId);
-						delete ($scope.vm);
+						$scope.hasData = true;
+						var newPatient = $scope.vm = PatientService.create();
+						PatientService.currentId = newPatient._id;
 				}
 		});
 

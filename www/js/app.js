@@ -79,6 +79,19 @@ angular.module('app', ['ionic', 'app.refdata', 'app.services', 'app.controllers'
         }
     })
 
+    .state('app.addpatient', {
+        url: '/patient/',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/patient-edit.html',
+                controller: 'PatientController'
+            }
+        },
+        params: {
+            patientId: null
+        }
+    })
+
     .state('app.settings', {
         url: '/settings',
         views: {
