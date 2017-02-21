@@ -12,6 +12,11 @@ resources/android/
 resources/ios/
 *.swp
 .DS_Store
+!www/lib/templates.js
+<<<<<<< HEAD
 .vscode/
 res/
+=======
+res/
 .vscode/
+>>>>>>> develop
