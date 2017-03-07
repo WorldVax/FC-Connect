@@ -73,6 +73,7 @@ angular.module('app.controllers')
 		$scope.startVaccination = function () {
 				$scope.vaccination.dateAdministered =  new Date();
 				$scope.vaccination.selectedCvx = $scope.vaccination.cvxOptions[0];
+				$scope.vaccination.LotNumber = "";
 				$scope.vaccinationModal.show();
 		};
 
@@ -80,6 +81,7 @@ angular.module('app.controllers')
 				$scope.vm.medical.series.push({
 						Cvx: $scope.vaccination.selectedCvx.code,
 						VaccineName: $scope.vaccination.selectedCvx.desc,
+						LotNumber: $scope.vaccination.LotNumber,
 						DateAdministered: $scope.vaccination.dateAdministered
 				});
 				$scope.finishEdit();
