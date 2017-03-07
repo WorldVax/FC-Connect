@@ -7,6 +7,7 @@ angular.module('app.services')
         // an external resource.
         var appText = {
             ADDRESS : "Address",
+            ADMINISTRATION_DATE: "Date of Administration",
             CELL : "cell",
             CITY : "City",
             CODE : "Code",
@@ -15,6 +16,7 @@ angular.module('app.services')
             CVX_CODE : "Cvx Code",
             BIRTH_DATE: "Birth Date",
             DATE_ADMINISTERED : "Date Administered",
+            DESCRIPTION: "Description",
             EMAIL : "Email",
             FIRST_NAME: "First Name",
             GENDER : "Gender",
@@ -22,15 +24,19 @@ angular.module('app.services')
             GOVERNMENT_ID : "SSN",
             IMMUNIZATIONS : "Immunizations",
             LAST_NAME : "Last Name",
+            LOT_NUMBER: "Lot Number",
             MEDICAL_HISTORY : "Medical History",
             NAME : "Name",
             NEW_PATIENT : "New Patient",
             NO_PATIENT_RECORD_SELECTED : "No patient record has been selected.",
+            NOTE: "Note",
             PERSONAL : "personal",
             PHONE : "Phone",
-            POSTAL_CODE: "Zip Code",    
+            POSTAL_CODE: "Zip Code",
+            RECORD_IMMUNIZATION: "Record Immunization",
             STATE : "State",
             STREET : "Street",
+            VACCINE: "Vaccine",
             WORK : "work"
         };
 

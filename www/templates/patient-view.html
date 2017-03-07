@@ -78,6 +78,7 @@
             <ion-list>
                 <ion-item ng-repeat="rec in vm.medical.series">
                     <div class="item">{{txt("CVX_CODE")}}: {{rec.Cvx}} {{txt("NAME")}}: {{rec.VaccineName}}</div>
+                    <div class="item" ng-show="rec.LotNumber"> {{txt("LOT_NUMBER")}}: {{rec.LotNumber}}</div>
                     <div class="item item-text-wrap">{{txt("DATE_ADMINISTERED")}}: {{fmt(rec.DateAdministered, "DATE")}}</div>
                 </ion-item>
             </ion-list>

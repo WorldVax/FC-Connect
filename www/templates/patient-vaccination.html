@@ -2,25 +2,30 @@
     <ion-content>
         <ion-list>
             <ion-item class="item item-divider item-icon-right">
-                Record Immunization
+                {{txt("RECORD_IMMUNIZATION")}}
                 <button class="button button-icon icon ion-checkmark-round button-positive button-clear padding" ng-click="finishVaccination()"></button>
             </ion-item>
-            <ion-item> <label class="item item-input">
-                <span class="input-label">Date of Administration</span>
-                <input type="date" ng-model="vaccination.dateAdministered">
-            </label>
+            <ion-item>
+                <label class="item item-input">
+                    <span class="input-label">{{txt("ADMINISTRATION_DATE")}}</span>
+                    <input type="date" ng-model="vaccination.dateAdministered">
+                </label>
                 <label class="item item-input item-select">
-                <span class="input-label">Vaccine</span>
-                <select ng-model="vaccination.selectedCvx" ng-options="item.desc for item in vaccination.cvxOptions"> </select>
-            </label>
+                    <span class="input-label">{{txt("VACCINE")}}</span>
+                    <select ng-model="vaccination.selectedCvx" ng-options="item.desc for item in vaccination.cvxOptions"> </select>
+                </label>
                 <label class="item item-input">
-                <span class="input-label">Description</span>
-                <div class="item item-text-wrap">{{vaccination.selectedCvx.name}}</div>
-            </label>
+                    <span class="input-label">{{txt("LOT_NUMBER")}}</span>
+                    <input type="text" ng-model="vaccination.LotNumber">
+                </label>
                 <label class="item item-input">
-                <span class="input-label">Note</span>
-                <div class="item item-text-wrap">{{vaccination.selectedCvx.note}}</div>
-            </label>
+                    <span class="input-label">{{txt("DESCRIPTION")}}</span>
+                    <div class="item item-text-wrap">{{vaccination.selectedCvx.name}}</div>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">{{txt("NOTE")}}</span>
+                    <div class="item item-text-wrap">{{vaccination.selectedCvx.note}}</div>
+                </label>
             </ion-item>
         </ion-list>
     </ion-content>
